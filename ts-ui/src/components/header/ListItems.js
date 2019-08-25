@@ -1,67 +1,91 @@
 import React from 'react';
 import {ListItem, ListItemIcon, ListItemText, ListSubheader} from '@material-ui/core';
-import DashboardIcon from '@material-ui/icons/Dashboard';
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import PeopleIcon from '@material-ui/icons/People';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import LayersIcon from '@material-ui/icons/Layers';
+import {Link as RouterLink} from "react-router-dom";
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import ShowChartIcon from '@material-ui/icons/ShowChart';
+import AndroidIcon from '@material-ui/icons/Android';
+import HelpIcon from '@material-ui/icons/Help';
+import PaymentIcon from '@material-ui/icons/Payment';
+import FreeBreakfastIcon from '@material-ui/icons/FreeBreakfast';
+import WarningIcon from '@material-ui/icons/Warning';
 
-export const mainListItems = (
+export const mainListItems = (authenticated, classes) => (
     <div>
-        <ListItem button>
+        <ListItem button
+                  component={RouterLink}
+                  to="/trades"
+                  className={authenticated ? classes.drawerLinkActive : classes.drawerLinkInactive}>
             <ListItemIcon>
-                <DashboardIcon />
+                <ShowChartIcon/>
             </ListItemIcon>
-            <ListItemText primary="Dashboard" />
+            <ListItemText primary="Dashboard"/>
         </ListItem>
-        <ListItem button>
+        <ListItem button
+                  component={RouterLink}
+                  to="/autobot"
+                  className={authenticated ? classes.drawerLinkActive : classes.drawerLinkInactive}>
             <ListItemIcon>
-                <ShoppingCartIcon />
+                <AndroidIcon/>
             </ListItemIcon>
-            <ListItemText primary="Orders" />
+            <ListItemText primary="Configure Bot"/>
         </ListItem>
-        <ListItem button>
+        <ListItem button
+                  component={RouterLink}
+                  to="/subscriptions"
+                  className={authenticated ? classes.drawerLinkActive : classes.drawerLinkInactive}>
             <ListItemIcon>
-                <PeopleIcon />
+                <PaymentIcon/>
             </ListItemIcon>
-            <ListItemText primary="Customers" />
+            <ListItemText primary="Subscriptions"/>
         </ListItem>
-        <ListItem button>
+        <ListItem button
+                  component={RouterLink}
+                  to="/setup">
             <ListItemIcon>
-                <BarChartIcon />
+                <HelpIcon/>
             </ListItemIcon>
-            <ListItemText primary="Reports" />
+            <ListItemText primary="Setup help"/>
         </ListItem>
-        <ListItem button>
+        <ListItem button
+                  component={RouterLink}
+                  to="/disclaimer">
             <ListItemIcon>
-                <LayersIcon />
+                <WarningIcon/>
             </ListItemIcon>
-            <ListItemText primary="Integrations" />
+            <ListItemText primary="Disclaimer"/>
+        </ListItem>
+        <ListItem button
+                  component={RouterLink}
+                  to="/demo"
+                  className={authenticated ? classes.drawerLinkInactive : classes.drawerLinkActive}>
+            <ListItemIcon>
+                <FreeBreakfastIcon/>
+            </ListItemIcon>
+            <ListItemText primary="Demo"/>
         </ListItem>
     </div>
 );
 
-export const secondaryListItems = (
-    <div>
+export const secondaryListItems = (authenticated, classes) => (
+    <div className={authenticated ? classes.drawerLinkActive : classes.drawerLinkInactive}>
         <ListSubheader inset>Saved reports</ListSubheader>
         <ListItem button>
             <ListItemIcon>
-                <AssignmentIcon />
+                <AssignmentIcon/>
             </ListItemIcon>
-            <ListItemText primary="Current month" />
+            <ListItemText primary="Current month"/>
         </ListItem>
         <ListItem button>
             <ListItemIcon>
-                <AssignmentIcon />
+                <AssignmentIcon/>
             </ListItemIcon>
-            <ListItemText primary="Last quarter" />
+            <ListItemText primary="Last quarter"/>
         </ListItem>
         <ListItem button>
             <ListItemIcon>
-                <AssignmentIcon />
+                <AssignmentIcon/>
             </ListItemIcon>
-            <ListItemText primary="Year-end sale" />
+            <ListItemText primary="Year-end sale"/>
         </ListItem>
     </div>
 );

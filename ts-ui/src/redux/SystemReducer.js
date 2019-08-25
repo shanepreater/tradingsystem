@@ -4,7 +4,7 @@ const initState = {
     latestError: null,
     previousErrors: [],
     maxErrors: 10,
-    drawerOpen: true
+    drawerOpen: false
 };
 
 const handleCommsError = (state, errorAction) => {

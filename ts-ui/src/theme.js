@@ -1,6 +1,5 @@
 import {createMuiTheme, makeStyles} from "@material-ui/core";
-import {purple, green, blue, blueGrey, indigo, deepOrange} from "@material-ui/core/colors";
-import {darken} from "@material-ui/core/styles";
+import {deepOrange, green, indigo} from "@material-ui/core/colors";
 
 export const mainTheme = createMuiTheme({
     palette: {
@@ -21,26 +20,19 @@ export const useStyles = makeStyles(theme => ({
     },
     appBar: {
         zIndex: theme.zIndex.drawer + 1,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.leavingScreen,
-        }),
+        width: `calc(100%)`
     },
-    appBarShift: {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
-        transition: theme.transitions.create(['width', 'margin'], {
-            easing: theme.transitions.easing.sharp,
-            duration: theme.transitions.duration.enteringScreen,
-        }),
-    }, toolbar: {
+    avatar: {
+        margin: 0
+    },
+    toolbar: {
         paddingRight: 24, // keep right padding when drawer closed
     },
     menuButton: {
         marginRight: 36,
     },
-        rightMenuButton: {
-        margin: "1em",
+    rightMenuButton: {
+        marginRight: theme.spacing(4)
     },
     menuButtonHidden: {
         display: 'none',
@@ -58,10 +50,17 @@ export const useStyles = makeStyles(theme => ({
     toolbarText: {
         fontcolor: "white",
     },
+    drawerLinkActive: {
+        display: 'flex'
+    },
+    drawerLinkInactive: {
+        display: 'none'
+    },
     drawerPaper: {
         position: 'relative',
         whiteSpace: 'nowrap',
         width: drawerWidth,
+        marginTop: theme.spacing(1),
         transition: theme.transitions.create('width', {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,

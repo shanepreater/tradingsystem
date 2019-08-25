@@ -3,6 +3,7 @@ import {Link as RouterLink, Route, Switch} from "react-router-dom";
 import {connect} from 'react-redux';
 import {
     AppBar,
+    Avatar,
     Badge,
     Container,
     CssBaseline,
@@ -40,12 +41,12 @@ const ProfileImage = ({user, classes}) => {
     console.log(user);
     if (user.data.imageUrl) {
         return (
-            <img src={user.data.imageUrl} alt={user.data.name} height="35em"/>
+            <Avatar src={user.data.imageUrl} alt={user.data.name} className={classes.avatar}/>
         );
     } else {
         return (
             <React.Fragment>
-                <PersonIcon/>{user.data.name}
+                <PersonIcon className={classes.avatar}/>{user.data.name}
             </React.Fragment>
         );
     }
@@ -111,14 +112,16 @@ const MyToolBar = ({open, authenticated, user, toggleOpen, classes}) => {
 const MainTemplate = ({open, toggleOpen, disclaimerAccepted, user, authenticated}) => {
     const classes = useStyles();
     const tb = authenticated ? LoggedInToolBar : LoggedOutToolBar;
+    const resolveDrawerClass = () => {
+      return authenticated ? classes.authenticatedDrawerPaper : classes.drawerPaperClose;
+    };
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+            <AppBar position="absolute" className={classes.appBar}>
                 <MyToolBar open={open} toggleOpen={toggleOpen} user={user} authenticated={authenticated}
                            classes={classes}/>
             </AppBar>
-
             <Drawer
                 variant="permanent"
                 classes={{
@@ -131,7 +134,7 @@ const MainTemplate = ({open, toggleOpen, disclaimerAccepted, user, authenticated
                     </IconButton>
                 </div>
                 <Divider/>
-                <List>{mainListItems}</List>
+                <List>{mainListItems(authenticated, classes)}</List>
                 <Divider/>
                 <List>{secondaryListItems}</List>
             </Drawer>

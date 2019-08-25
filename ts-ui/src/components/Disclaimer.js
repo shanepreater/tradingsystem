@@ -13,8 +13,14 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const Disclaimer = ({disclaimerText, disclaimerVersion, user, handleAccept}) => {
+const Disclaimer = ({disclaimerText, disclaimerVersion, user, handleAccept, history}) => {
     const classes = useStyles();
+
+    const acceptClick = (user, disclaimerVersion) => {
+        handleAccept(user, disclaimerVersion);
+        history.push('/');
+    };
+
     return (
         <div className={'disclaimer-container container'}>
             <h2>Disclaimer</h2>
@@ -22,7 +28,7 @@ const Disclaimer = ({disclaimerText, disclaimerVersion, user, handleAccept}) => 
             <Button color="secondary"
                     className={classes.button}
                     variant="contained"
-                    onClick={() => {handleAccept(user, disclaimerVersion)}}>
+                    onClick={() => {acceptClick(user, disclaimerVersion)}}>
                 <DoneOutlineIcon />&nbsp;Accept
             </Button>
         </div>
@@ -40,7 +46,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         handleAccept: (user, version) => {
-            dispatch(disclaimerAccepted(user, version))
+            dispatch(disclaimerAccepted(user, version));
         }
     }
 };
