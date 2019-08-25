@@ -1,0 +1,32 @@
+package com.opportunitywatcher.tradesystem.model;
+
+public enum Instrument {
+    aud_cad,
+    aud_chf,
+    aud_nzd,
+    aud_jpy,
+    aud_usd,
+    cad_chf,
+    cad_jpy,
+    chf_jpy,
+    eur_aud,
+    eur_cad,
+    eur_chf,
+    eur_gbp,
+    eur_jpy,
+    eur_nzd,
+    eur_usd,
+    gbp_aud,
+    gbp_cad,
+    gbp_chf,
+    gbp_jpy,
+    gbp_nzd,
+    gbp_usd,
+    nzd_cad,
+    nzd_chf,
+    nzd_jpy,
+    nzd_usd,
+    usd_cad,
+    usd_chf,
+    usd_jpy;
+}

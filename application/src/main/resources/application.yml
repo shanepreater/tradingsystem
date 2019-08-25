@@ -1,0 +1,65 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/autobot}
+    username: ${DATASOURCE_USER:autobot}
+    password: ${DATASOURCE_PASSWORD:password}
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            clientId: ${GOOGLE_CLIENT_ID}
+            clientSecret: ${GOOGLE_CLIENT_SECRET}
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - profile
+          facebook:
+            clientId: ${FACEBOOK_CLIENT_ID}
+            clientSecret: ${FACEBOOK_CLIENT_SECRET}
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - email
+              - public_profile
+          github:
+            clientId: ${GITHUB_CLIENT_ID}
+            clientSecret: ${GITHUB_CLIENT_SECRET}
+            redirectUriTemplate: "{baseUrl}/oauth2/callback/{registrationId}"
+            scope:
+              - user:email
+              - read:user
+        provider:
+          facebook:
+            authorizationUri: https://www.facebook.com/v3.0/dialog/oauth
+            tokenUri: https://graph.facebook.com/v3.0/oauth/access_token
+            userInfoUri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,verified,is_verified,picture.width(250).height(250)
+
+tradingsystem:
+  config:
+    disclaimer-version: 1.0.0
+    disclaimer: This site will perform trades on your behalf, the outcome of which are unknown. This means that a participating user accepts full responsibility for any risk incurred, along with any potential gains or <b>losses</b>. The owners, operators and contributors to this web based application accept no liability for any losses encurred by users of the application. Further more by accepting this disclaimer you <b>confirm</b> that any money you decide to risk using the automated strategies provided here within are monies that you can afford to lose.\n\nBy accepting this disclaimer you authorise the owners, operators and contributors to this application to place and stop trades on your behalf, the outcome of which are <b>entirely</b> your own responsibility.
+    auth:
+      tokenSecret: AC6D96C90030DD58429D2751AC1BDBBC
+      tokenExpirationMsec: 864000000
+    oauth2:
+      # After successfully authenticating with the OAuth2 Provider,
+      # we'll be generating an auth token for the user and sending the token to the
+      # redirectUri mentioned by the client in the /oauth2/authorize request.
+      # We're not using cookies because they won't work well in mobile clients.
+      authorizedRedirectUris:
+        - http://localhost:3000/oauth2/redirect
+        - http://www.opportunitywatcher.com/oauth2/redirect
+        - https://www.opportunitywatcher.com/oauth2/redirect
+        - http://www.opportunitywatcher.co.uk/oauth2/redirect
+        - https://www.opportunitywatcher.co.uk/oauth2/redirect
+        - myandroidapp://oauth2/redirect
+        - myiosapp://oauth2/redirect
+
+logging.level:
+  org.springframework.security: DEBUG
