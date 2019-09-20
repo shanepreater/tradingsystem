@@ -22,6 +22,7 @@
         <jjwt.version>0.9.1</jjwt.version>
         <oauth.autoconfigure.version>2.1.6.RELEASE</oauth.autoconfigure.version>
         <lombok.version>1.16.22</lombok.version>
+        <jsoup.version>1.12.1</jsoup.version>
 
         <!-- Build dependencies -->
         <surefire.version>2.22.1</surefire.version>
@@ -57,6 +58,11 @@
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -74,6 +80,11 @@
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>

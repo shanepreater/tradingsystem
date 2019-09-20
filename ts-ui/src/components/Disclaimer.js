@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {disclaimerAccepted} from '../redux/ConfigActions'
-import {Button, makeStyles} from "@material-ui/core";
+import {Button, makeStyles, Paper, Typography} from "@material-ui/core";
 import DoneOutlineIcon from '@material-ui/icons/DoneOutline';
 
 const useStyles = makeStyles(theme => ({
@@ -22,8 +22,8 @@ const Disclaimer = ({disclaimerText, disclaimerVersion, user, handleAccept, hist
     };
 
     return (
-        <div className={'disclaimer-container container'}>
-            <h2>Disclaimer</h2>
+        <Paper>
+            <Typography variant="h2">Disclaimer</Typography>
             <div dangerouslySetInnerHTML={{__html:disclaimerText}}/>
             <Button color="secondary"
                     className={classes.button}
@@ -31,7 +31,7 @@ const Disclaimer = ({disclaimerText, disclaimerVersion, user, handleAccept, hist
                     onClick={() => {acceptClick(user, disclaimerVersion)}}>
                 <DoneOutlineIcon />&nbsp;Accept
             </Button>
-        </div>
+        </Paper>
     );
 };
 
