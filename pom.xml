@@ -27,7 +27,7 @@
         <!-- Build dependencies -->
         <surefire.version>2.22.1</surefire.version>
         <jsch.version>0.1.56</jsch.version>
-        <postgresql.version>42.2.6</postgresql.version>
+        <postgresql.version>42.2.25</postgresql.version>
 
     </properties>
 
