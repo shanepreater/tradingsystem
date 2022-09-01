@@ -22,7 +22,7 @@
         <jjwt.version>0.9.1</jjwt.version>
         <oauth.autoconfigure.version>2.1.6.RELEASE</oauth.autoconfigure.version>
         <lombok.version>1.16.22</lombok.version>
-        <jsoup.version>1.12.1</jsoup.version>
+        <jsoup.version>1.15.3</jsoup.version>
 
         <!-- Build dependencies -->
         <surefire.version>2.22.1</surefire.version>
